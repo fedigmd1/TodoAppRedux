@@ -1,13 +1,21 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import AddTodo from "./containers/AddTodo";
+import VisibleTodos from "./containers/VisibleTodos";
 
 class TodoApp extends Component {
+
+  state = {
+    todos: [],
+    visibilityFilter: 'SHOW_ALL_TODOS'
+  }
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => { console.log("clicked") }} >
-          <Text>TodoApp</Text>
-        </TouchableOpacity>
+        <AddTodo />
+        <View>
+          <VisibleTodos />
+        </View>
       </View>
     );
   }
@@ -17,7 +25,8 @@ export default TodoApp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    paddingTop: 30
+    // alignItems: 'center',
+    // justifyContent: 'center'
   }
 });
